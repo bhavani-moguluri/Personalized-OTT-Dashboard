@@ -5,6 +5,7 @@ const supabase = require("../supabase");
 // Add to History
 router.post("/add", async (req, res) => {
   try {
+    console.log("REQ BODY:", req.body);
     const {
       user_id,
       movie_title,
