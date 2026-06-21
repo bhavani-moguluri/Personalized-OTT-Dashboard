@@ -6,7 +6,7 @@ function History() {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 
-    fetch(`http://localhost:5000/api/history/${user.id}`)
+    fetch(`https://personalized-ott-dashboard.onrender.com/api/history/${user.id}`)
       .then((res) => res.json())
       .then((data) => {
   console.log("History API FULL:", JSON.stringify(data));
