@@ -9,8 +9,7 @@ function Recommendations() {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/api/recommendations/${user.id}`
-    )
+        "https://personalized-ott-dashboard.onrender.com/api/recommendations" )
       .then((res) => res.json())
       .then((data) => {
         setMovies(data);

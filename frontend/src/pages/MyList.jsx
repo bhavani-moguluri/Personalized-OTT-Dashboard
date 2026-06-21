@@ -15,7 +15,9 @@ function MyList() {
       return;
     }
 
-    fetch(`http://localhost:5000/api/watchlist/${user.id}`)
+    fetch(
+  `https://personalized-ott-dashboard.onrender.com/api/watchlist/${user.id}`
+)
       .then((res) => res.json())
       .then((data) => {
         console.log("Movies from API:", data);

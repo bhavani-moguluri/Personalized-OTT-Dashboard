@@ -12,7 +12,7 @@ function Subscription() {
   const loadSubscriptions = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/subscriptions/${user.id}`
+        `https://personalized-ott-dashboard.onrender.com/api/subscriptions/${user.id}`
       );
 
       const data = await res.json();
@@ -36,8 +36,8 @@ function Subscription() {
 
     try {
       await fetch(
-        "http://localhost:5000/api/subscriptions/add",
-        {
+          "https://personalized-ott-dashboard.onrender.com/api/subscriptions/add" ,    
+             {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -67,12 +67,12 @@ function Subscription() {
 
   const deleteSubscription = async (id) => {
     try {
-      await fetch(
-        `http://localhost:5000/api/subscriptions/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+     await fetch(
+  `https://personalized-ott-dashboard.onrender.com/api/subscriptions/${id}`,
+  {
+    method: "DELETE",
+  }
+);
 
       loadSubscriptions();
     } catch (error) {

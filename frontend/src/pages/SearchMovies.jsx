@@ -9,7 +9,7 @@ function SearchMovies() {
       const user = JSON.parse(localStorage.getItem("user"));
 
       const response = await fetch(
-        "http://localhost:5000/api/recommendations/add",
+  "https://personalized-ott-dashboard.onrender.com/api/recommendations/add",
         {
           method: "POST",
           headers: {
@@ -51,8 +51,8 @@ alert(`${movie.title} added to Recommendations 🎯`);
     try {
       const user = JSON.parse(localStorage.getItem("user"));
 
-      const response = await fetch(
-        "http://localhost:5000/api/watchlist/add",
+     const response = await fetch(
+  "https://personalized-ott-dashboard.onrender.com/api/watchlist/add",
         {
           method: "POST",
           headers: {
