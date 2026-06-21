@@ -41,3 +41,6 @@ app.listen(PORT, () => {
 app.get("/", (req, res) => {
   res.send("OTT Dashboard Backend Running");
 });
+app.get("/test", (req, res) => {
+  res.json({ message: "Backend is working" });
+});
