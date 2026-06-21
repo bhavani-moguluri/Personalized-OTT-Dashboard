@@ -62,11 +62,16 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const { data: user } = await supabase
+    console.log("LOGIN EMAIL:", email);
+
+    const { data: user, error } = await supabase
       .from("users")
       .select("*")
-      .eq("email", email)
+      .eq("email", email.trim())
       .single();
+
+    console.log("USER FOUND:", user);
+    console.log("SUPABASE ERROR:", error);
 
     if (!user) {
       return res.status(400).json({
@@ -100,11 +105,10 @@ router.post("/login", async (req, res) => {
       },
     });
   } catch (error) {
-    console.log(error);
+    console.log("LOGIN ERROR:", error);
     res.status(500).json({
       message: "Server Error",
     });
   }
 });
-
 module.exports = router;
