@@ -13,7 +13,12 @@ const app = express();
 // Middleware FIRST
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://personalized-ott-dashboard.vercel.app",
+      "https://personalized-ott-dashboard-nfoka8x0p-bhavani-moguluris-projects.vercel.app"
+    ],
+    credentials: true,
   })
 );
 
@@ -33,3 +38,6 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 }); 
+app.get("/", (req, res) => {
+  res.send("OTT Dashboard Backend Running");
+});
