@@ -52,8 +52,7 @@ alert(`${movie.title} added to Recommendations 🎯`);
       const user = JSON.parse(localStorage.getItem("user"));
 
      const response = await fetch(
-  "https://personalized-ott-dashboard.onrender.com/api/watchlist/add",
-        {
+"https://personalized-ott-dashboard.onrender.com/api/recommendations/${user.id}",        {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

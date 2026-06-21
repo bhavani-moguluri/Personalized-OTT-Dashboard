@@ -9,7 +9,7 @@ function Recommendations() {
 
   useEffect(() => {
     fetch(
-        "https://personalized-ott-dashboard.onrender.com/api/recommendations" )
+        "https://personalized-ott-dashboard.onrender.com/api/recommendations")
       .then((res) => res.json())
       .then((data) => {
         setMovies(data);
