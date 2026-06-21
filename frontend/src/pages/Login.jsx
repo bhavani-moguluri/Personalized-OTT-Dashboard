@@ -38,9 +38,9 @@ function Login() {
         alert(data.message);
       }
     } catch (error) {
-      console.log(error);
-      alert("Server Error");
-    }
+  console.error("LOGIN ERROR:", error);
+  alert(error.message || "Server Error");
+}
   };
 
   return (
