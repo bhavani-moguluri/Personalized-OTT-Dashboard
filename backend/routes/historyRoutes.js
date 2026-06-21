@@ -6,20 +6,20 @@ const supabase = require("../supabase");
 router.post("/add", async (req, res) => {
   try {
     console.log("REQ BODY:", req.body);
-    const {
-      user_id,
-      movie_title,
-      movie_image,
-    } = req.body;
+   const {
+  userId,
+  movieTitle,
+  movieImage,
+} = req.body;
 
     const { data, error } = await supabase
       .from("history")
       .insert([
-        {
-          user_id,
-          movie_title,
-          movie_image,
-        },
+       {
+  user_id: userId,
+  movie_title: movieTitle,
+  movie_image: movieImage,
+},
       ])
       .select();
 
