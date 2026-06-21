@@ -84,18 +84,17 @@ alert(`${movie.title} added to Recommendations 🎯`);
       const user = JSON.parse(localStorage.getItem("user"));
 
       await fetch(
-        "http://localhost:5000/api/history/add",
+        "https://personalized-ott-dashboard.onrender.com/api/history/add",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            userId: user.id,
-            movieId: movie.id,
-            movieTitle: movie.title,
-            movieImage: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-          }),
+  user_id: user.id,
+  movie_title: movie.title,
+  movie_image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+}),
         }
       );
 
