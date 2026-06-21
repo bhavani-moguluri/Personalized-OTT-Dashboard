@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto;   /* Allow vertical scrolling */
+}
+
+body {
+  background: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+/* Logo */
+.logo {
+  color: #7c3aed; /* Purple */
+}
+
+/* Tagline */
+.tagline {
+  color: #d1d5db; /* Light gray */
+}
+
+/* Hero Title */
+.hero-text h2 {
+  color: #ffffff;
+}
+
+/* Hero Subtitle */
+.hero-text p {
+  color: #d1d5db;
+}
+
+/* Login Card Title */
+.login-card h2 {
+  color: #ffffff;
+}
+
+/* Register Link */
+.register-link {
+  color: #d1d5db;
+}
+
+.register-link span {
+  color: #ffffff;
+  font-weight: bold;
+}
