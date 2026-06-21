@@ -98,7 +98,7 @@ PORT=5000
 ## Live Demo
 
 Frontend:
-https://personalized-ott-dashboard-nfoka8x0p-bhavani-moguluris-projects.vercel.app
+https://personalized-ott-dashboard-90jownm9q-bhavani-moguluris-projects.vercel.app/
 
 GitHub Repository:
 https://github.com/bhavani-moguluri/Personalized-OTT-Dashboard
