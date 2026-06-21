@@ -11,16 +11,8 @@ const recommendationRoutes = require("./routes/recommendationRoutes");
 const app = express();
 
 // Middleware FIRST
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://personalized-ott-dashboard.vercel.app",
-      "https://personalized-ott-dashboard-nfoka8x0p-bhavani-moguluris-projects.vercel.app"
-    ],
+app.use(cors());
     credentials: true,
-  })
-);
 
 app.use(express.json());
 
