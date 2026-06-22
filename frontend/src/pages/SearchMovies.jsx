@@ -96,10 +96,10 @@ function SearchMovies() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            user_id: user.id,
-            movie_title: movie.title,
-            movie_image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-          }),
+  userId: user.id,
+  movieTitle: movie.title,
+  movieImage: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+})
         }
       );
 
