@@ -2,28 +2,29 @@ const express = require("express");
 const router = express.Router();
 const supabase = require("../supabase");
 
-// Add to History
 router.post("/add", async (req, res) => {
   try {
     console.log("REQ BODY:", req.body);
-   const {
-  userId,
-  movieTitle,
-  movieImage,
-} = req.body;
+
+    const { userId, movieTitle, movieImage } = req.body;
+
+    console.log(userId, movieTitle, movieImage);
 
     const { data, error } = await supabase
       .from("history")
       .insert([
-       {
-  user_id: userId,
-  movie_title: movieTitle,
-  movie_image: movieImage,
-},
+        {
+          user_id: userId,
+          movie_title: movieTitle,
+          movie_image: movieImage,
+        },
       ])
       .select();
 
-    if (error) throw error;
+    if (error) {
+      console.log("SUPABASE ERROR:", error);
+      throw error;
+    }
 
     res.status(201).json(data);
   } catch (err) {
