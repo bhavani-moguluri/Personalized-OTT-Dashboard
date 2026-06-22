@@ -51,19 +51,20 @@ alert(`${movie.title} added to Recommendations 🎯`);
     try {
       const user = JSON.parse(localStorage.getItem("user"));
 
-     const response = await fetch(
-"https://personalized-ott-dashboard.onrender.com/api/recommendations/${user.id}",        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: user.id,
-            movieTitle: movie.title,
-            movieImage: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-          }),
-        }
-      );
+const response = await fetch(
+  "https://personalized-ott-dashboard.onrender.com/api/watchlist/add",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId: user.id,
+      movieTitle: movie.title,
+      movieImage: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+    }),
+  }
+);
 
       const data = await response.json();
 

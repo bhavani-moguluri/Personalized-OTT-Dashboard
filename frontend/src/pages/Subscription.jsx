@@ -11,9 +11,8 @@ function Subscription() {
 
   const loadSubscriptions = async () => {
     try {
-      const res = await fetch(
-        `https://personalized-ott-dashboard.onrender.com/api/subscriptions/${user.id}`
-      );
+        const res = await fetch(
+  `https://personalized-ott-dashboard.onrender.com/api/subscriptions/${user.id}` );
 
       const data = await res.json();
       setSubscriptions(data);
