@@ -27,7 +27,8 @@ function Login() {
       );
 
       const data = await response.json();
-
+onsole.log(data);
+alert(data.message);
       if (response.ok) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
@@ -42,6 +43,7 @@ function Login() {
   alert(error.message || "Server Error");
 }
   };
+  
 
   return (
     <div className="login-page">
