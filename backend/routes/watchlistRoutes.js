@@ -6,7 +6,7 @@ const supabase = require("../supabase");
 router.get("/:user_id", async (req, res) => {
   try {
     const { data, error } = await supabase
-      .from("watchlist")
+     .from("watchlist")
       .select("*")
       .eq("user_id", req.params.user_id);
 
@@ -29,21 +29,21 @@ router.post("/add", async (req, res) => {
     const { userId, movieTitle, movieImage } = req.body;
 
     const { data, error } = await supabase
-      .from("history")
-      .insert([
-        {
-          user_id: userId,
-          movie_title: movieTitle,
-          movie_image: movieImage,
-        },
-      ])
+  .from("watchlist")
+  .insert([
+    {
+      user_id: userId,
+      movie_title: movieTitle,
+      movie_image: movieImage,
+    },
+  ])
       .select();
 
     if (error) throw error;
 
     res.status(201).json(data);
   } catch (err) {
-    console.log("HISTORY ADD ERROR:", err);
+   console.log("HISTORY ADD ERROR:", err);
     res.status(500).json({
       message: err.message,
     });

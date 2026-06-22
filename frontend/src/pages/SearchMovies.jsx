@@ -26,11 +26,11 @@ function SearchMovies() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            userId: user.id,
-            movieTitle: movie.title,
-            movieImage: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-          }),
+         body: JSON.stringify({
+  userId: user.id,
+  movieTitle: movie.title,
+  movieImage: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+}),
         }
       );
 
