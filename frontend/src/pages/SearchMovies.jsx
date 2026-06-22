@@ -47,70 +47,35 @@ alert(`${movie.title} added to Recommendations 🎯`);
     setMovies(data.results);
   };
 
-  const addToWatchlist = async (movie) => {
-    try {
-      const user = JSON.parse(localStorage.getItem("user"));
-
-const response = await fetch(
-  "https://personalized-ott-dashboard.onrender.com/api/watchlist/add",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      userId: user.id,
-      movieTitle: movie.title,
-      movieImage: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-    }),
-  }
-);
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert(`${movie.title} added to My List ❤️`);
-      } else {
-        alert(data.message);
-      }
-    } catch (error) {
-      console.log(error);
-      alert("Error adding movie");
-    }
-  };
-
- const saveHistory = async (movie) => {
+ const addToWatchlist = async (movie) => {
   try {
     const user = JSON.parse(localStorage.getItem("user"));
 
-    console.log("USER:", user);
-
-    if (!user || !user.id) {
-      alert("User not logged in");
-      return;
-    }
-
-    await fetch(
-      "https://personalized-ott-dashboard.onrender.com/api/history/add",
+    const response = await fetch(
+      "https://personalized-ott-dashboard.onrender.com/api/watchlist/add",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          user_id: user.id,
-          movie_title: movie.title,
-          movie_image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+          userId: user.id,
+          movieTitle: movie.title,
+          movieImage: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
         }),
       }
     );
 
-    window.open(
-      `https://www.themoviedb.org/movie/${movie.id}`,
-      "_blank"
-    );
+    const data = await response.json();
+
+    if (response.ok) {
+      alert(`${movie.title} added to My List ❤️`);
+    } else {
+      alert(data.message);
+    }
   } catch (error) {
     console.log(error);
+    alert("Error adding movie");
   }
 };
 
