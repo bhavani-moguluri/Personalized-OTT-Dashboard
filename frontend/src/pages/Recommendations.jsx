@@ -7,16 +7,18 @@ function Recommendations() {
     localStorage.getItem("user")
   );
 
-  useEffect(() => {
-    fetch(
-        "https://personalized-ott-dashboard.onrender.com/api/recommendations")
-      .then((res) => res.json())
-      .then((data) => {
-        setMovies(data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+ useEffect(() => {
+  if (!user) return;
 
+  fetch(
+    `https://personalized-ott-dashboard.onrender.com/api/recommendations/${user.id}`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      setMovies(data);
+    })
+    .catch((err) => console.log(err));
+}, []);
   return (
     <div
       style={{
