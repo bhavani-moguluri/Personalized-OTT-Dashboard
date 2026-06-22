@@ -27,7 +27,7 @@ function Login() {
       );
 
       const data = await response.json();
-onsole.log(data);
+console.log(data);
 alert(data.message);
       if (response.ok) {
         localStorage.setItem("token", data.token);
