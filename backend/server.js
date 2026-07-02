@@ -10,29 +10,37 @@ const recommendationRoutes = require("./routes/recommendationRoutes");
 
 const app = express();
 
-// Middleware FIRST
-app.use(cors());
+// Middleware
+app.use(
+  cors({
+    origin: true,
     credentials: true,
+  })
+);
 
 app.use(express.json());
 
-// Routes AFTER middleware
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/watchlist", watchlistRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
 app.use("/api/history", historyRoutes);
-app.use("/api/Recommendations", recommendationRoutes);
-require("dotenv").config();
+app.use("/api/recommendations", recommendationRoutes);
 
+// Test Routes
+app.get("/", (req, res) => {
+  res.send("OTT Dashboard Backend Running");
+});
 
+app.get("/test", (req, res) => {
+  res.json({
+    message: "Backend is working",
+  });
+});
+
+// Start Server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-}); 
-app.get("/", (req, res) => {
-  res.send("OTT Dashboard Backend Running");
-});
-app.get("/test", (req, res) => {
-  res.json({ message: "Backend is working" });
 });

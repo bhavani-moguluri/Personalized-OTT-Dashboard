@@ -16,11 +16,15 @@ router.post("/register", async (req, res) => {
       });
     }
 
-    const { data: existingUser } = await supabase
-      .from("users")
-      .select("*")
-      .eq("email", email)
-      .single();
+   const { error } = await supabase
+  .from("users")
+  .insert([
+    {
+      name,
+      email: email.toLowerCase(),
+      password: hashedPassword,
+    },
+  ]);
 
     if (existingUser) {
       return res.status(400).json({
@@ -62,16 +66,14 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    console.log("LOGIN EMAIL:", email);
+    const { data, error } = await supabase
+  .from("users")
+  .select("*")
+  .eq("email", email.trim().toLowerCase());
 
-    const { data: user, error } = await supabase
-      .from("users")
-      .select("*")
-      .eq("email", email.trim())
-      .single();
+if (error) throw error;
 
-    console.log("USER FOUND:", user);
-    console.log("SUPABASE ERROR:", error);
+const user = data[0];
 
     if (!user) {
       return res.status(400).json({
@@ -79,10 +81,7 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    const isMatch = await bcrypt.compare(
-      password,
-      user.password
-    );
+    const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
       return res.status(400).json({
@@ -106,6 +105,7 @@ router.post("/login", async (req, res) => {
     });
   } catch (error) {
     console.log("LOGIN ERROR:", error);
+
     res.status(500).json({
       message: "Server Error",
     });
